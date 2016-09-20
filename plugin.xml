@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-mtj-stat"
+        version="1.0.0">
+
+    <name>MtjPlugin</name>
+    <description>
+        百度移动统计
+    </description>
+    <license>MIT</license>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+
+    <js-module src="www/MtjPlugin.js">
+        <clobbers target="window.plugins.mtjPlugin"/>
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MtjPlugin">
+                <param name="android-package" value="net.huatech.mobile.plugin.MtjPlugin" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/MtjPlugin.java" target-dir="src/net/huatech/mobile/plugin"/>
+        <source-file src="src/android/Baidu_Mtj_3.7.4.9.jar" target-dir="libs" />
+    </platform>
+
+</plugin>
