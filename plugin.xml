@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-mtj-stat"
+        id="cordova-plugin-mtj"
         version="1.0.0">
 
     <name>MtjPlugin</name>
@@ -17,8 +17,6 @@
     <js-module src="www/MtjPlugin.js">
         <clobbers target="window.plugins.mtjPlugin"/>
     </js-module>
- <hook type="before_plugin_install" src="../../scripts/test.js" />
-    <hook type="after_plugin_install" src="scripts/rongAfterPluginInstall.js" />
     <!-- android -->
     <platform name="android">
         <config-file target="AndroidManifest.xml" parent="/manifest">
@@ -42,5 +40,36 @@
         <source-file src="src/android/MtjPlugin.java" target-dir="src/plugin/mtj"/>
         <source-file src="src/android/Baidu_Mtj_3.7.4.9.jar" target-dir="libs" />
     </platform>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="JPushPlugin">
+                <param name="ios-package" value="CDVMtj" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVMtj.h" />
+        <header-file src="src/ios/BaiduMobStat.h" />
+        <source-file src="src/ios/CDVMtj.m" />
+        <framework src="javascriptCore.framework" />
+        <framework src="Foundation.framework" weak="true" />
+        <framework src="UIKit.framework" weak="true" />
+        <framework src="CoreGraphics.framework"  weak="true"/>
+        <framework src="CoreTelephony.framework"  weak="true"/>
+        <framework src="SystemConfiguration.framework"  weak="true"/>
+        <framework src="CoreLocation.framework"  weak="true"/>
+        <framework src="Security.framework" weak="true"/>
+        <source-file src="src/ios/libBaiduMobStat.a" framework="true" compiler-flags="-fobjc-arc"/>
+        <framework src="libstdc++.tbd" weak="true" />
+        <framework src="libz.1.2.5.tbd" weak="true" />
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+            <dict>
+                <key>NSAllowsArbitraryLoads</key>
+                <true/>
+            </dict>
+        </config-file>
+
+    </platform>
+
 
 </plugin>
