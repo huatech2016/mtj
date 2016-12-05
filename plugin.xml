@@ -41,7 +41,7 @@
         <source-file src="src/android/Baidu_Mtj_3.7.4.9.jar" target-dir="libs" />
     </platform>
 
-    <platform name="ios">
+<!--     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="JPushPlugin">
                 <param name="ios-package" value="CDVMtj" />
@@ -69,7 +69,7 @@
             </dict>
         </config-file>
 
-    </platform>
+    </platform> -->
 
 
 </plugin>
